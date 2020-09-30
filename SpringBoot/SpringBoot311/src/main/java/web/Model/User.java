@@ -126,7 +126,18 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public boolean isRoleInUser(Role role) {
-        return this.roles.stream().anyMatch(role1 -> role1.getId() == role.getId());
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", Lastname='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", role=" + roles +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package web.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String name;
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<User> users;
 
     public String getName() {
@@ -50,12 +52,7 @@ public class Role implements GrantedAuthority {
         return name;
     }
 
-    public boolean isInUser() {
-        return isInUser;
-    }
-
-    public void setInUser(boolean inUser) {
-        isInUser = inUser;
+    public Role() {
     }
 
     @Transient
